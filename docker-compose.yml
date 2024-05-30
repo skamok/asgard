@@ -1,0 +1,52 @@
+version: "3.5"
+services:
+  webserver:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+      tags:
+        - "asgard-webserver:latest"
+    container_name: AsgardWebserver
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    networks:
+      - webnet
+      - internal
+  
+  nodejstools:
+    build:
+      context: ./nodejstools
+      dockerfile: Dockerfile
+      tags:
+        - "asgard-nodejstools:latest"
+    container_name: AsgardBackend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    networks:
+      - webnet
+      - internal
+  
+  pytontools:
+    build:
+      context: ./pytontools
+      dockerfile: Dockerfile
+      tags:
+        - "asgard-pytontools:latest"
+    container_name: AsgardAI
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - webnet
+      - internal
+
+networks:
+  webnet:
+    driver: bridge
+  internal:
+    driver: bridge
+
+

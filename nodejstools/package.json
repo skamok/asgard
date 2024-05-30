@@ -1,0 +1,14 @@
+{
+    "name": "nodejstools",
+    "version": "1.0.0",
+    "description": "",
+    "main": "backendapp.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "s.karshankou",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.19.2"
+    }
+}
